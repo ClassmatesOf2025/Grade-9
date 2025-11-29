@@ -171,7 +171,7 @@
     <div class="name-slide bg-1" data-name="#Classmates"><div class="label">#Classmates</div></div>
   </div>
 
-  <div id="emotional-text">"You may be forgotten by the world, but the warmth of our shared days will live in my heart forever."</div>
+  <div id="emotional-text">"You may be forgotten by the world, but the warmth of our shared days will live in my heart forever."  <div id=\"emotional-text\">\"You may be forgotten by the world, but the warmth of our shared days will live in my heart forever.\"</div>
 
   <div id=\"extras\" style=\"margin-top:30px;font-size:22px;max-width:800px;line-height:1.5;animation:fadeUp 2s ease forwards;opacity:0;\">
     <div style=\"margin-bottom:15px;\">✨ This page was created to honor the unforgettable moments of <b>Grade 9 – 2025</b>.</div>
@@ -292,21 +292,24 @@
 
   <script>
     // MUSIC TOGGLE CONTROL
-    const musicBtn = document.getElementById('musicToggle');
-    let musicEnabled = true;
+    const musicBtn = document.getElementById("musicToggle");
+let musicPlaying = false;
 
-    musicBtn.onclick = () => {
-      if (musicEnabled) {
-        music.pause();
-        musicEnabled = false;
-        musicBtn.textContent = '🔇 Music Off';
-      } else {
-        music.play();
-        musicEnabled = true;
-        musicBtn.textContent = '🔊 Music On';
-      }
-    };
-  </script>
+// Initial label
+musicBtn.textContent = "Unmute";
+
+musicBtn.onclick = () => {
+  if (musicPlaying) {
+    music.pause();
+    musicBtn.textContent = "Unmute";
+    musicPlaying = false;
+  } else {
+    music.play().catch(e => console.log(e));
+    musicBtn.textContent = "Mute";
+    musicPlaying = true;
+  }
+};
+</script>
 
 </body>
 </html>

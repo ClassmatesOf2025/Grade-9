@@ -99,16 +99,16 @@
     }
 
     /* Per-slide color accents (uses CSS variables for easy tweaking) */
-    .bg-1{--base:linear-gradient(135deg,#000dff,#646cff)}
+    .bg-1{--base:linear-gradient(135deg,#0f172a,#0b3a6b)}
     .bg-2{--base:linear-gradient(135deg,#2b0033,#5b0b8a)}
-    .bg-3{--base:linear-gradient(135deg,#07ff00,#99ff96)}
-    .bg-4{--base:linear-gradient(135deg,#00a1ff,#77cdff)}
-    .bg-5{--base:linear-gradient(135deg,#81fff6,#00ffec)}
-    .bg-6{--base:linear-gradient(135deg,#84ffc8,#04ff8f)}
-    .bg-7{--base:linear-gradient(135deg,#1600ff,#1000ba)}
-    .bg-8{--base:linear-gradient(135deg,#ff69b4,#ff0080)}
-    .bg-9{--base:linear-gradient(135deg,#ffb7ce,#ff7ea7)}
-    .bg-10{--base:linear-gradient(135deg,#ff0000,#c50000)}
+    .bg-3{--base:linear-gradient(135deg,#05202b,#0d6b6b)}
+    .bg-4{--base:linear-gradient(135deg,#2b1f0f,#7a3e00)}
+    .bg-5{--base:linear-gradient(135deg,#12005e,#2e2b9b)}
+    .bg-6{--base:linear-gradient(135deg,#1a1f36,#005f6a)}
+    .bg-7{--base:linear-gradient(135deg,#2a0520,#7b1a3c)}
+    .bg-8{--base:linear-gradient(135deg,#00323a,#007a9e)}
+    .bg-9{--base:linear-gradient(135deg,#ffc2d8,#ff8fb8)}
+    .bg-10{--base:linear-gradient(135deg,#b30000,#4a0000)}
 
     /* apply the base gradient and add vignette */
     .bg-1, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6, .bg-7, .bg-8{
@@ -160,14 +160,15 @@
   <div id="video-container" aria-hidden="false">
     <div class="name-slide bg-1" data-name="Hope" style="--flash-speed:3.6s;"><div class="label">Hope</div></div>
     <div class="name-slide bg-2" data-name="Zakes" style="--flash-speed:2.8s;"><div class="label">Zakes</div></div>
-    <div class="name-slide bg-3" data-name="Rajab" style="--flash-speed:3.2s;"><div class="label">Rajab</div></div>
+    $1
+    <div class="name-slide bg-4" data-name="Rizvi" style="--flash-speed:2.7s;"><div class="label">Rizvi</div></div></div>
     <div class="name-slide bg-4" data-name="Thabo" style="--flash-speed:2.6s;"><div class="label">Thabo</div></div>
     <div class="name-slide bg-5" data-name="Umar" style="--flash-speed:3.8s;"><div class="label">Umar</div></div>
-    <div class="name-slide bg-6" data-name="Rizvi" style="--flash-speed:3.8s;"><div class="label">Rizvi</div></div>
-    <div class="name-slide bg-7" data-name="Rafi" style="--flash-speed:3.1s;"><div class="label">Rafi</div></div>
-    <div class="name-slide bg-8" data-name="Sidra" style="--flash-speed:2.9s;"><div class="label">Sidra</div></div>
-    <div class="name-slide bg-9" data-name="Husnaa" style="--flash-speed:3.4s;"><div class="label">Husnaa</div></div>
-    <div class="name-slide bg-10" data-name="Laaiqa" style="--flash-speed:3.4s;"><div class="label">Laaiqa</div></div>
+    <div class="name-slide bg-6" data-name="Rafi" style="--flash-speed:3.1s;"><div class="label">Rafi</div></div>
+    <div class="name-slide bg-7" data-name="Sidra" style="--flash-speed:2.9s;"><div class="label">Sidra</div></div>
+    $1
+
+    <div class="name-slide bg-1" data-name="Laaiqa" style="--flash-speed:3.0s;"><div class="label">Laaiqa</div></div></div>
 
     <!-- final screens -->
     <div class="name-slide bg-2" data-name="#Grade 9's"><div class="label">#Grade 9's</div></div>
@@ -275,7 +276,8 @@
     document.body.appendChild(gradientBg);
 
     // BACKGROUND MUSIC
-    const music=new Audio('https://cdn.pixabay.com/download/audio/2023/02/28/audio_e8a2d6f83b.mp3?filename=amapiano-afrobeat-141110.mp3');
+    // FIXED MUSIC SOURCE
+    const music = new Audio("music/highschool.mp3");('https://cdn.pixabay.com/download/audio/2023/02/28/audio_e8a2d6f83b.mp3?filename=amapiano-afrobeat-141110.mp3');
     music.volume=0.55;
     music.loop=true;
     

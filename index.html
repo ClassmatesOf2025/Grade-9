@@ -160,9 +160,15 @@
     <div class="name-slide bg-1" data-name="#Classmates"><div class="label">#Classmates</div></div>
   </div>
 
-  <div id="emotional-text">"You may be forgotten by the world, but the warmth of our shared days will live in my heart forever."</div>
+  <div id="emotional-text">"You may be forgotten by the world, but the warmth of our shared days will live in my heart forever."  <div id=\"emotional-text\">\"You may be forgotten by the world, but the warmth of our shared days will live in my heart forever.\"</div>
 
-  <script>
+  <div id=\"extras\" style=\"margin-top:30px;font-size:22px;max-width:800px;line-height:1.5;animation:fadeUp 2s ease forwards;opacity:0;\">
+    <div style=\"margin-bottom:15px;\">✨ This page was created to honor the unforgettable moments of <b>Grade 9 – 2025</b>.</div>
+    <div style=\"margin-bottom:15px;\">🌟 Every name, every laugh, every memory has shaped the year into something truly special.</div>
+    <div style=\"margin-bottom:15px;\">🎇 May these memories continue to shine long after the year ends.</div>
+  </div>
+
+<script>
     // JS sequence controller: cycles slides, adds show class to make backgrounds visible.
     (function(){
       const slides = Array.from(document.querySelectorAll('#video-container .name-slide'));
@@ -191,5 +197,54 @@
       });
     })();
   </script>
+  <button id="replayBtn" style="margin-top:25px;padding:12px 26px;font-size:18px;font-weight:600;border:none;border-radius:10px;background:#ffffff20;color:white;backdrop-filter:blur(6px);cursor:pointer;transition:0.3s;">Replay Animation</button>
+
+  <script>
+    // PARTICLE SPARK EFFECT
+    const sparkContainer=document.createElement('div');
+    sparkContainer.style.position='fixed';sparkContainer.style.inset='0';sparkContainer.style.pointerEvents='none';sparkContainer.style.zIndex='1';
+    document.body.appendChild(sparkContainer);
+
+    function createSpark(){
+      const s=document.createElement('div');
+      const size=Math.random()*4+2;
+      s.style.position='absolute';
+      s.style.width=size+'px';
+      s.style.height=size+'px';
+      s.style.borderRadius='50%';
+      s.style.background='white';
+      s.style.left=Math.random()*window.innerWidth+'px';
+      s.style.top=Math.random()*window.innerHeight+'px';
+      s.style.opacity='0.9';
+      s.style.filter='blur(1px)';
+      s.style.transition='transform 1.5s linear, opacity 1.5s linear';
+      sparkContainer.appendChild(s);
+      requestAnimationFrame(()=>{
+        s.style.transform='translateY(-60px)';
+        s.style.opacity='0';
+      });
+      setTimeout(()=>s.remove(),1500);
+    }
+    setInterval(createSpark,120);
+
+    // BACKGROUND GRADIENT DECORATION
+    const gradientBg=document.createElement('div');
+    gradientBg.style.position='fixed';
+    gradientBg.style.inset='0';
+    gradientBg.style.background='radial-gradient(circle at 20% 20%,rgba(255,255,255,0.12),transparent), radial-gradient(circle at 80% 70%,rgba(255,255,255,0.10),transparent)';
+    gradientBg.style.pointerEvents='none';
+    gradientBg.style.zIndex='0';
+    document.body.appendChild(gradientBg);
+
+    // BACKGROUND MUSIC
+    const music=new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_8c95e3a5b3.mp3?filename=ambient-melody-110466.mp3');
+    music.volume=0.6;
+    music.loop=true;
+    music.play().catch(e=>console.log("Autoplay blocked"));
+
+    // REPLAY BUTTON
+    document.getElementById('replayBtn').onclick=()=>location.reload();
+  </script>
+
 </body>
 </html>

@@ -8,25 +8,36 @@
     body {
       margin: 0;
       padding: 0;
-      background: #ffffff;
-      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      font-family: "Poppins", sans-serif;
       text-align: center;
+      color: white;
+      overflow-x: hidden;
     }
 
     h1 {
       margin-top: 40px;
-      font-size: 48px;
-      font-weight: bold;
+      font-size: 56px;
+      font-weight: 700;
+      animation: fadeDown 1.5s ease forwards;
+    }
+
+    @keyframes fadeDown {
+      0% { opacity: 0; transform: translateY(-40px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     #video-container {
       position: relative;
       width: 100%;
-      max-width: 700px;
-      margin: 50px auto;
-      height: 350px;
+      max-width: 750px;
+      margin: 60px auto;
+      height: 380px;
       overflow: hidden;
-      border-radius: 20px;
+      border-radius: 25px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
     }
 
     .name-slide {
@@ -38,41 +49,44 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 50px;
+      font-size: 54px;
+      font-weight: 600;
       color: white;
       opacity: 0;
       animation: fade 4s linear forwards;
+      text-shadow: 0 0 15px rgba(255,255,255,0.9);
     }
 
     @keyframes fade {
       0% { opacity: 0; }
-      20% { opacity: 1; }
+      15% { opacity: 1; transform: scale(1.05); }
       80% { opacity: 1; }
-      100% { opacity: 0; }
+      100% { opacity: 0; transform: scale(1); }
     }
 
-    .bg1 { background: url('https://i.imgur.com/lNyE2gO.jpeg') center/cover; }
-    .bg2 { background: url('https://i.imgur.com/HhO4W9d.jpeg') center/cover; }
-    .bg3 { background: url('https://i.imgur.com/d1zZVYG.jpeg') center/cover; }
-    .bg4 { background: url('https://i.imgur.com/lyuKNlF.jpeg') center/cover; }
-    .bg5 { background: url('https://i.imgur.com/YEn5h8H.jpeg') center/cover; }
-    .bg6 { background: url('https://i.imgur.com/zHnK0VM.jpeg') center/cover; }
-    .bg7 { background: url('https://i.imgur.com/pv8Dqwm.jpeg') center/cover; }
-    .bg8 { background: url('https://i.imgur.com/zNwWmCQ.jpeg') center/cover; }
-
-    #after-text {
-      margin-top: 20px;
-      font-size: 32px;
-      font-weight: bold;
-    }
+    /* NEW thunder animated backgrounds */
+    .bg1 { background: url('https://i.imgur.com/0E8Fh6v.gif') center/cover; }
+    .bg2 { background: url('https://i.imgur.com/epY1Wnq.gif') center/cover; }
+    .bg3 { background: url('https://i.imgur.com/wvWkJ7H.gif') center/cover; }
+    .bg4 { background: url('https://i.imgur.com/BXLHGaw.gif') center/cover; }
+    .bg5 { background: url('https://i.imgur.com/EH1uf2T.gif') center/cover; }
+    .bg6 { background: url('https://i.imgur.com/K9J0gYj.gif') center/cover; }
+    .bg7 { background: url('https://i.imgur.com/rEd8o7T.gif') center/cover; }
+    .bg8 { background: url('https://i.imgur.com/a6H9kLD.gif') center/cover; }
 
     #emotional-text {
       margin-top: 40px;
-      font-size: 22px;
-      max-width: 700px;
+      font-size: 24px;
+      max-width: 750px;
       margin-left: auto;
       margin-right: auto;
-      color: #444;
+      animation: fadeUp 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -95,7 +109,7 @@
   </div>
 
   <div id="emotional-text">
-    "You may fade from the world’s memory one day, but the moments we lived together will echo in my heart forever."
+    "You may fade from the world’s memory one day, but the moments we have been together will echo in my heart forever."
   </div>
 </body>
 </html>

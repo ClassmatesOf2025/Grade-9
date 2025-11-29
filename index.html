@@ -142,6 +142,17 @@
   </style>
 </head>
 <body>
+
+  <!-- LOADING SCREEN -->
+  <div id="loadingScreen" style="position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0a0f24,#162a59);display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;font-family:'Poppins',sans-serif;animation:fadeOut 1s ease forwards;animation-delay:2.8s;">
+    <div style="font-size:42px;font-weight:700;letter-spacing:-1px;">Loading Memories...</div>
+    <div class="loader" style="margin-top:25px;width:70px;height:70px;border-radius:50%;border:6px solid #ffffff20;border-top-color:white;animation:spin 1s linear infinite;"></div>
+  </div>
+
+  <style>
+    @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+    @keyframes fadeOut { to{opacity:0;visibility:hidden} }
+  </style>
   <h1>Best classmates of 2025</h1>
 
   <div id="video-container" aria-hidden="false">
@@ -160,12 +171,12 @@
     <div class="name-slide bg-1" data-name="#Classmates"><div class="label">#Classmates</div></div>
   </div>
 
-  <div id="emotional-text">"You may be forgotten by the world, but the warmth of our shared days will live in my heart forever." </div>
+  <div id="emotional-text">"You may be forgotten by the world, but the warmth of our shared days will live in my heart forever."</div>
 
   <div id=\"extras\" style=\"margin-top:30px;font-size:22px;max-width:800px;line-height:1.5;animation:fadeUp 2s ease forwards;opacity:0;\">
     <div style=\"margin-bottom:15px;\">✨ This page was created to honor the unforgettable moments of <b>Grade 9 – 2025</b>.</div>
     <div style=\"margin-bottom:15px;\">🌟 Every name, every laugh, every memory has shaped the year into something truly special.</div>
-    <div style=\"margin-bottom:15px;\">🎇 May these memories continue to shine long after the year ends and in future years.</div>
+    <div style=\"margin-bottom:15px;\">🎇 May these memories continue to shine long after the year ends and in the future years.</div>
   </div>
 
 <script>
@@ -201,7 +212,30 @@
 
   <script>
     // PARTICLE SPARK EFFECT
-    const sparkContainer=document.createElement('div');
+    const sparkContainer
+    
+    // MORE INTENSE SPARKS
+    function createSpark(){
+      const s=document.createElement('div');
+      const size=Math.random()*5+3;
+      s.style.position='absolute';
+      s.style.width=size+'px';
+      s.style.height=size+'px';
+      s.style.borderRadius='50%';
+      s.style.background='white';
+      s.style.left=Math.random()*window.innerWidth+'px';
+      s.style.top=window.innerHeight+'px';
+      s.style.opacity='0.9';
+      s.style.boxShadow='0 0 12px white';
+      s.style.transition='transform 2.2s linear, opacity 2.2s linear';
+      sparkContainer.appendChild(s);
+      requestAnimationFrame(()=>{
+        s.style.transform='translateY(-120px)';
+        s.style.opacity='0';
+      });
+      setTimeout(()=>s.remove(),2200);
+    }
+    setInterval(createSpark,70);=document.createElement('div');
     sparkContainer.style.position='fixed';sparkContainer.style.inset='0';sparkContainer.style.pointerEvents='none';sparkContainer.style.zIndex='1';
     document.body.appendChild(sparkContainer);
 
@@ -237,6 +271,13 @@
     document.body.appendChild(gradientBg);
 
     // BACKGROUND MUSIC
+    const music=new Audio('https://cdn.discordapp.com/attachments/1416068779158405276/1444413725888221215/ytmp3free.cc_high-school.mp3');
+    music.volume=0.55;
+    music.loop=true;
+    
+    document.addEventListener('click',()=>{
+      music.play();
+    },{once:true});
     const music=new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_8c95e3a5b3.mp3?filename=ambient-melody-110466.mp3');
     music.volume=0.6;
     music.loop=true;

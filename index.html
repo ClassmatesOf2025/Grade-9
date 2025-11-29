@@ -4,112 +4,192 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Best classmates of 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root{
+      --glass: rgba(255,255,255,0.08);
+      --glass-2: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg,#4b2fcf 0%,#2b9bff 100%);
+      font-family: "Poppins", system-ui, Arial, sans-serif;
       text-align: center;
       color: white;
-      overflow-x: hidden;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:20px;
+      padding:40px 20px;
     }
 
     h1 {
-      margin-top: 40px;
-      font-size: 56px;
-      font-weight: 700;
-      animation: fadeDown 1.5s ease forwards;
+      margin: 0;
+      font-size: clamp(28px,4vw,56px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-shadow: 0 6px 30px rgba(0,0,0,0.25);
+      transform-origin: center;
+      animation: fadeDown .8s ease-out;
     }
 
-    @keyframes fadeDown {
-      0% { opacity: 0; transform: translateY(-40px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:none}}
 
+    /* video container */
     #video-container {
       position: relative;
-      width: 100%;
-      max-width: 750px;
-      margin: 60px auto;
-      height: 380px;
+      width: min(100%,980px);
+      height: clamp(240px,34vw,420px);
+      border-radius: 20px;
       overflow: hidden;
-      border-radius: 25px;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(15px);
-      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      background: linear-gradient(180deg,var(--glass),var(--glass-2));
+      backdrop-filter: blur(10px) saturate(120%);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
-    .name-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 54px;
-      font-weight: 600;
-      color: white;
-      opacity: 0;
-      animation: fade 4s linear forwards;
-      text-shadow: 0 0 15px rgba(255,255,255,0.9);
+    .name-slide{
+      position:absolute;inset:0;display:grid;place-items:center;
+      color:white;font-weight:700;font-size:clamp(28px,6vw,64px);
+      text-shadow: 0 6px 30px rgba(0,0,0,0.45);
+      opacity:0;transform:scale(.98);
+      transition:opacity .6s ease, transform .6s ease;
+      background-size:cover;background-position:center;
     }
 
-    @keyframes fade {
-      0% { opacity: 0; }
-      15% { opacity: 1; transform: scale(1.05); }
-      80% { opacity: 1; }
-      100% { opacity: 0; transform: scale(1); }
+    .name-slide.show{opacity:1;transform:scale(1)}
+
+    /* Build thunder backgrounds using layered CSS gradients and animated flash overlay. No external gifs. */
+    .name-slide::before{
+      content:"";position:absolute;inset:0;z-index:0;
+      /* subtle moving cloud texture made from radial-gradients */
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.03) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.02) 0%, transparent 20%),
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.18));
+      background-blend-mode: overlay;
+      animation: clouds 12s linear infinite;
     }
 
-    /* NEW thunder animated backgrounds */
-    .bg1 { background: url('https://i.imgur.com/0E8Fh6v.gif') center/cover; }
-    .bg2 { background: url('https://i.imgur.com/epY1Wnq.gif') center/cover; }
-    .bg3 { background: url('https://i.imgur.com/wvWkJ7H.gif') center/cover; }
-    .bg4 { background: url('https://i.imgur.com/BXLHGaw.gif') center/cover; }
-    .bg5 { background: url('https://i.imgur.com/EH1uf2T.gif') center/cover; }
-    .bg6 { background: url('https://i.imgur.com/K9J0gYj.gif') center/cover; }
-    .bg7 { background: url('https://i.imgur.com/rEd8o7T.gif') center/cover; }
-    .bg8 { background: url('https://i.imgur.com/a6H9kLD.gif') center/cover; }
-
-    #emotional-text {
-      margin-top: 40px;
-      font-size: 24px;
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-      animation: fadeUp 2s ease forwards;
-      opacity: 0;
+    @keyframes clouds{
+      0%{background-position:0% 0%,0% 0%}
+      50%{background-position:30% 20%, -20% -10%}
+      100%{background-position:0% 0%,0% 0%}
     }
 
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
+    /* lightning flash overlay */
+    .name-slide::after{
+      content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+      background:linear-gradient(90deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.0) 100%);
+      opacity:0;
+      mix-blend-mode: screen;
+      animation: flash var(--flash-speed,3s) linear infinite;
     }
+
+    @keyframes flash{
+      0%{opacity:0}
+      7%{opacity:0.85}
+      10%{opacity:0}
+      30%{opacity:0}
+      37%{opacity:0.5}
+      40%{opacity:0}
+      100%{opacity:0}
+    }
+
+    /* Per-slide color accents (uses CSS variables for easy tweaking) */
+    .bg-1{--base:linear-gradient(135deg,#0f172a,#0b3a6b)}
+    .bg-2{--base:linear-gradient(135deg,#2b0033,#5b0b8a)}
+    .bg-3{--base:linear-gradient(135deg,#05202b,#0d6b6b)}
+    .bg-4{--base:linear-gradient(135deg,#2b1f0f,#7a3e00)}
+    .bg-5{--base:linear-gradient(135deg,#12005e,#2e2b9b)}
+    .bg-6{--base:linear-gradient(135deg,#1a1f36,#005f6a)}
+    .bg-7{--base:linear-gradient(135deg,#2a0520,#7b1a3c)}
+    .bg-8{--base:linear-gradient(135deg,#00323a,#007a9e)}
+
+    /* apply the base gradient and add vignette */
+    .bg-1, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6, .bg-7, .bg-8{
+      background-image: var(--base), radial-gradient(ellipse at center, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.45) 80%);
+      background-blend-mode: overlay, multiply;
+    }
+
+    /* Add a subtle animated diagonal pulse for energy */
+    .name-slide .label{
+      position:relative;z-index:2;display:inline-block;padding:6px 18px;border-radius:8px;background:rgba(255,255,255,0.04);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+
+    .name-slide .label::after{
+      content:"";position:absolute;inset:0;border-radius:8px;z-index:-1;
+      background:linear-gradient(120deg, rgba(255,255,255,0.04), rgba(255,255,255,0.0));
+      transform:translateX(-120%);
+      transition:transform .9s ease;
+    }
+
+    .name-slide.show .label::after{transform:translateX(20%)}
+
+    /* final texts styling */
+    .final-text{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(18px,3vw,36px);font-weight:600}
+
+    /* responsive tweaks */
+    @media (max-width:600px){
+      .name-slide{font-size:clamp(18px,7vw,36px)}
+      #video-container{height:48vw}
+    }
+
   </style>
 </head>
 <body>
   <h1>Best classmates of 2025</h1>
 
-  <div id="video-container">
-    <div class="name-slide bg1" style="animation-delay: 0s;">Hope</div>
-    <div class="name-slide bg2" style="animation-delay: 4s;">Zakes</div>
-    <div class="name-slide bg3" style="animation-delay: 8s;">Rajab</div>
-    <div class="name-slide bg4" style="animation-delay: 12s;">Thabo</div>
-    <div class="name-slide bg5" style="animation-delay: 16s;">Umar</div>
-    <div class="name-slide bg6" style="animation-delay: 20s;">Rafi</div>
-    <div class="name-slide bg7" style="animation-delay: 24s;">Sidra</div>
-    <div class="name-slide bg8" style="animation-delay: 28s;">Husnaa</div>
+  <div id="video-container" aria-hidden="false">
+    <div class="name-slide bg-1" data-name="Hope" style="--flash-speed:3.6s;"><div class="label">Hope</div></div>
+    <div class="name-slide bg-2" data-name="Zakes" style="--flash-speed:2.8s;"><div class="label">Zakes</div></div>
+    <div class="name-slide bg-3" data-name="Rajab" style="--flash-speed:3.2s;"><div class="label">Rajab</div></div>
+    <div class="name-slide bg-4" data-name="Thabo" style="--flash-speed:2.6s;"><div class="label">Thabo</div></div>
+    <div class="name-slide bg-5" data-name="Umar" style="--flash-speed:3.8s;"><div class="label">Umar</div></div>
+    <div class="name-slide bg-6" data-name="Rafi" style="--flash-speed:3.1s;"><div class="label">Rafi</div></div>
+    <div class="name-slide bg-7" data-name="Sidra" style="--flash-speed:2.9s;"><div class="label">Sidra</div></div>
+    <div class="name-slide bg-8" data-name="Husnaa" style="--flash-speed:3.4s;"><div class="label">Husnaa</div></div>
 
-    <div class="name-slide bg1" style="animation-delay: 32s; font-size: 45px;">#Grade 9's</div>
-    <div class="name-slide bg2" style="animation-delay: 36s; font-size: 38px;">Thank you all for being the best classmates of the year</div>
-    <div class="name-slide bg3" style="animation-delay: 40s; font-size: 45px;">#Classmates</div>
+    <!-- final screens -->
+    <div class="name-slide bg-2" data-name="#Grade 9's"><div class="label">#Grade 9's</div></div>
+    <div class="name-slide bg-3" data-name="Thanks"><div class="label">Thank you all for being the best classmates of the year</div></div>
+    <div class="name-slide bg-1" data-name="#Classmates"><div class="label">#Classmates</div></div>
   </div>
 
-  <div id="emotional-text">
-    "You may fade from the world’s memory one day, but the moments we have been together will echo in my heart forever."
-  </div>
+  <div id="emotional-text">"You may be forgotten by the world, but the warmth of our shared days will live in my heart forever."</div>
+
+  <script>
+    // JS sequence controller: cycles slides, adds show class to make backgrounds visible.
+    (function(){
+      const slides = Array.from(document.querySelectorAll('#video-container .name-slide'));
+      let index = 0;
+      const showTime = 3500; // milliseconds each slide is visible
+
+      function show(i){
+        slides.forEach((s,idx)=> s.classList.toggle('show', idx===i));
+      }
+
+      show(index);
+      const interval = setInterval(()=>{
+        index++;
+        if(index>=slides.length){ clearInterval(interval); return; }
+        show(index);
+      }, showTime);
+
+      // ensure the container is keyboard accessible: allow replay with space
+      document.addEventListener('keydown', e=>{
+        if(e.code==='Space'){
+          index = 0; show(0);
+          // restart interval
+          // for simplicity reload page to restart animation
+          location.reload();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

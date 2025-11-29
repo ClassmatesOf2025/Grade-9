@@ -287,5 +287,26 @@
     document.getElementById('replayBtn').onclick=()=>location.reload();
   </script>
 
+  <!-- MUSIC TOGGLE BUTTON -->
+  <button id="musicToggle" style="position:fixed;bottom:25px;right:25px;z-index:9999;padding:14px 20px;font-size:18px;font-weight:600;border:none;border-radius:50px;background:#ffffff25;color:white;backdrop-filter:blur(8px);cursor:pointer;transition:0.3s;box-shadow:0 4px 18px rgba(0,0,0,0.35);">🔊 Music On</button>
+
+  <script>
+    // MUSIC TOGGLE CONTROL
+    const musicBtn = document.getElementById('musicToggle');
+    let musicEnabled = true;
+
+    musicBtn.onclick = () => {
+      if (musicEnabled) {
+        music.pause();
+        musicEnabled = false;
+        musicBtn.textContent = '🔇 Music Off';
+      } else {
+        music.play();
+        musicEnabled = true;
+        musicBtn.textContent = '🔊 Music On';
+      }
+    };
+  </script>
+
 </body>
 </html>
